@@ -42,7 +42,8 @@ public class Gioco {
     }
 
     public void setPrezzo(double prezzo) {
-        this.prezzo = prezzo;
+//        if (prezzo < 0)
+//            this.prezzo = prezzo;
     }
 
     @Override
