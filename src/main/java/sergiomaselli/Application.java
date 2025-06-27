@@ -14,6 +14,11 @@ public class Application {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Collezione collezione = new Collezione();
+//        collezione.preAddGame();
+
+        // Messo per vedere se collezione è popolato
+        System.out.println(collezione);
+
         boolean inEsecuzione = true;
 
         while (inEsecuzione) {
@@ -24,8 +29,7 @@ public class Application {
                     4. Ricerca per Numero Giocatori
                     5. Rimuovi Gioco per ID
                     6. Aggiorna Prezzo Gioco per ID
-                    7. Statistiche
-                    8. Mostra Tutti i Giochi
+                    7. Mostra Tutti i Giochi
                     0. Esci
                     Scegli un'opzione:
                     """);
@@ -98,6 +102,21 @@ public class Application {
                     int num = Integer.parseInt(scanner.nextLine());
                     collezione.ricercaPerNumeroGiocatori(num).forEach(System.out::println);
                 }
+                case 5 -> {
+                    System.out.print("ID da rimuovere: ");
+                    String id = scanner.nextLine();
+                    boolean rimosso = collezione.rimuoviPerId(id);
+                    System.out.println(rimosso ? "Gioco rimosso." : "Gioco non trovato.");
+                }
+                case 6 -> {
+                    System.out.print("ID da aggiornare: ");
+                    String id = scanner.nextLine();
+                    System.out.print("Nuovo prezzo: ");
+                    double prezzo = Double.parseDouble(scanner.nextLine());
+                    boolean aggiornato = collezione.aggiornaPrezzoPerId(id, prezzo);
+                    System.out.println(aggiornato ? "Prezzo aggiornato." : "Gioco non trovato.");
+                }
+                case 7 -> collezione.mostraGiochi();
 
                 case 0 -> {
                     inEsecuzione = false;
